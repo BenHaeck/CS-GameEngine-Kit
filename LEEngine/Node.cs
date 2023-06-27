@@ -17,6 +17,7 @@ public class Node {
 	protected virtual bool OnMessage (Message message) {return false;}
 
 	static List<Node> allNodes = new List<Node>();
+	static Dictionary<char, List<Node>> globalNodeLists = new Dictionary<char, List<Node>>();
 
 	public bool Message (Message message) {
 		bool result = false;
@@ -56,7 +57,7 @@ public class Node {
 		return body;
 	}
 
-	public static Node SetupNode (Node node, Vector2 position) {
+	public static T SetupNode <T> (T node, Vector2 position) where T : Node {
 		node.Setup();
 		node.Body.position = position;
 		var ni = new NodeIter(allNodes);
@@ -70,7 +71,17 @@ public class Node {
 		while (ni.Next()) {
 			ni.Get().Destroy();
 		}
+
+		globalNodeLists.Clear();
 		allNodes.Clear();
+	}
+
+	public static List<Node> GetNodes(char k) {
+		if (!globalNodeLists.ContainsKey(k)) {
+			globalNodeLists.Add(k, new List<Node>());
+		}
+
+		return globalNodeLists[k];
 	}
 }
 
