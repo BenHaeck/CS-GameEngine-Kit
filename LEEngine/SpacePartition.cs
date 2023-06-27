@@ -1,6 +1,5 @@
 using System.Numerics;
 
-
 public class CollisionPartition {
 	List<Node>[,] sectors;
 	public readonly float sectorSize = 0;
@@ -17,7 +16,7 @@ public class CollisionPartition {
 	public void AddToSector (Node node) {
 		var sect = GetSectorIndex(node.Body.position);
 		
-		if (sect.y >= sectors.GetLength(0) || sect.x >= sectors.GetLength(1))
+		if (sect.y >= sectors.GetLength(0) || sect.x >= sectors.GetLength(1) || sect.y < 0 || sect.x < 0)
 			return;
 
 		if (sectors[sect.y, sect.x] == null)
