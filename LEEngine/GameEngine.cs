@@ -163,6 +163,9 @@ public class GameWorld {
 			MakeEntity(new Vector2(ent.x, ent.y), ent.t);
 		}
 	}
+	
+
+	
 }
 
 public enum GameMode {
