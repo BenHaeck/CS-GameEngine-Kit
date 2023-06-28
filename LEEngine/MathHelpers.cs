@@ -1,7 +1,5 @@
 using System.Numerics;
 
-
-
 public class MathHelpers {
 	// takes in the size of the canvas, then calculates
 	// a position and scale that fits the entire thing in a window
