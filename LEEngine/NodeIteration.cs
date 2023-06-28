@@ -44,6 +44,7 @@ public struct NodeIter: INodeIterator {
 
 	// moves to next node
 	public bool Next(){
+		if (nodes == null) return false;
 		i--;
 		while (i >= 0) {
 			if (nodes[i].ShouldRemove) {
@@ -56,7 +57,7 @@ public struct NodeIter: INodeIterator {
 	}
 
 	public Node Get (){
-		return nodes[i]; // returns the next node
+		return nodes[Math.Clamp(i, 0, nodes.Count - 1)]; // returns the next node
 	}
 }
 
@@ -74,6 +75,7 @@ public struct CollideIter: INodeIterator {
 	}
 
 	public bool Next(){
+		if (nodes == null) return false;
 		i--;
 		while (i >= 0) {
 			if (nodes[i].ShouldRemove) {// if marked for removal, remove it
@@ -89,6 +91,6 @@ public struct CollideIter: INodeIterator {
 	}
 
 	public Node Get() {
-		return nodes[i];
+		return nodes[Math.Clamp(i, 0, nodes.Count - 1)]; // returns the next node
 	}
 }
