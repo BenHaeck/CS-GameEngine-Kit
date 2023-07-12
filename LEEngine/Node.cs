@@ -23,7 +23,7 @@ public class Node {
 		bool result = false;
 
 		if (nodes != null)
-			for (int i = 0; i <= nodes.Length; i++) {
+			for (int i = 0; i < nodes.Length; i++) {
 				result = nodes[i].Message(message) || result;
 			}
 
